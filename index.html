@@ -3,29 +3,55 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>User Search</title>
-    <style>
-      .user-search {
-        display: flex;
-        gap: 10px;
-        margin-top: 20px;
-      }
-      .user-search input {
-        padding: 5px;
-      }
-      .user-search button {
-        padding: 5px 10px;
-        cursor: pointer;
-      }
-    </style>
+    <link rel="stylesheet" href="style.css">
+    <title>User Dashboard - Home</title>
+   
   </head>
   <body>
-    <h1>User Search</h1>
-    <div class="user-search">
-      <input type="text" id="username" placeholder="Enter username" />
-      <button onclick="searchUser()">Search User</button>
+    <div class="navbar">
+      <img src="https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Instagram_colored_svg_1-512.png" alt="Logo" /> <!-- Replace with your logo path -->
+      <div class="navbar-menu">
+        <a href="index.html"><b>Home</b></a>
+        <a href="contact.html"><b>Contact Us</b></a>
+        <a href="about.html"><b>About</b></a>
+      </div>
+      <div class="navbar-toggle" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </div>
-    <div id="maindiv"></div>
+    <div class="container">
+      
+      <div class="section">
+        <h2>Search User</h2>
+        <p>Find users by their usernames.</p>
+        <input type="text" id="username" placeholder="Enter username" />
+        <button onclick="searchUser()">Search</button>
+        <div id="maindiv"></div>
+      </div>
+      <div class="section">
+        <h2>Followers</h2>
+        <p>View the list of followers.</p>
+        <input type="text" id="followers-username" placeholder="Enter username to view followers" />
+        <button onclick="getFollowers()">Show Followers</button>
+        <div id="followers-results"></div>
+      </div>
+      <div class="section">
+        <h2>Following</h2>
+        <p>View the list of people you are following.</p>
+        <input type="text" id="following-username" placeholder="Enter username to view following" />
+        <button onclick="getFollowing()">Show Following</button>
+        <div id="following-results"></div>
+      </div>
+      <div class="section">
+        <h2>Post & Reels</h2>
+        <p>View the posts and reels</p>
+        <input type="text" id="post-reels" placeholder="Enter username to view posts" />
+        <button onclick="getPostReels()">Show Posts</button>
+        <div id="show_post-results"></div>
+      </div>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>
