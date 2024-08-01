@@ -1,3 +1,4 @@
+const corsProxy = 'https://cors-anywhere.herokuapp.com/';
 function searchUser() {
   const username = document.getElementById("username").value;
   
@@ -105,7 +106,6 @@ function getFollowing() {
 
 function getPostReels() {
   const username = document.getElementById("post-reels").value;
-  const corsProxy = 'https://cors-anywhere.herokuapp.com/';
   const resultsDiv = document.getElementById("show_post-results");
   const url =
     `https://instagram-scraper-api2.p.rapidapi.com/v1.2/posts?username_or_id_or_url=${encodeURIComponent(username)}`;
@@ -183,13 +183,14 @@ function displayPostReels(items, container) {
     itemDiv.className = "post-reel-result";
 
     const media = document.createElement("img");
-    media.src = item.thumbnail_url || 'img.png'; 
-    media.alt = item.caption || 'No Caption';
+    media.crossOrigin = "anonymous";	
+    media.src = `${corsProxy}${item.thumbnail_url}`; 
+    media.alt = item.caption.text || 'No Caption';
     media.style.width = '100%'; 
     media.style.borderRadius = '8px';
 
     const caption = document.createElement("div");
-    caption.innerHTML = `<p>${item.caption || 'No Caption'}</p>`;
+    caption.innerHTML = `<p>${item.caption.text || 'No Caption'}</p>`;
 
     itemDiv.appendChild(media);
     itemDiv.appendChild(caption);
